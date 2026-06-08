@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Receber Mensagem</title>
+<style>
+  body {
+    background-color: #800000; /* vermelho para alerta */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    background-color: #800000;
+    border: 2px solid white;
+    width: 320px;
+    padding: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="msgBox">
+    Carregando mensagem...
+  </div>
+
+<script>
+  // Função para pegar parâmetro da URL
+  function getParametroURL(nome) {
+    return new URLSearchParams(window.location.search).get(nome);
+  }
+
+  window.onload = function() {
+    const msg = getParametroURL('msg');
+    const msgBox = document.getElementById('msgBox');
+    if (msg && msg.trim().length > 0) {
+      msgBox.textContent = msg.toUpperCase();
+    } else {
+      msgBox.textContent = 'Nenhuma mensagem recebida.';
+    }
+  };
+</script>
+
+</body>
+</html>
